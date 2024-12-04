@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # 设置页面标题
-st.title("数据搜索工具")
+st.title("件号搜索工具")
 
 # 加载数据
 try:
@@ -12,8 +12,8 @@ except FileNotFoundError:
     st.stop()
 
 # 显示原始数据表
-st.write("原始数据：")
-st.dataframe(data)
+# st.write("原始数据：")
+# st.dataframe(data)
 
 # 搜索功能
 keyword = st.text_input("请输入搜索关键词")
