@@ -19,7 +19,10 @@ except FileNotFoundError:
 keyword = st.text_input("请输入搜索关键词")
 if keyword:
     results = data[data.apply(lambda row: keyword.lower() in row.to_string().lower(), axis=1)]
-    st.write(f"共找到 {len(results)} 条结果：")
-    st.dataframe(results)
+    if not result.empty: 
+        st.write(f"共找到 {len(results)} 条结果：")
+        st.dataframe(results, use_container_width=True)
+    else:
+        st.write("未找到结果，尝试其他关键词")
 else:
     st.info("请在上方输入关键词以搜索数据")
