@@ -42,8 +42,8 @@ if keyword:
         results.style.set_properties(
             **{
                 "text-align": "left",
-                "white-space": "nowrap",
-                "overflow": "hidden",
+                "white-space": "normal",
+                "overflow": "visible",
             }
         ),
         use_container_width=True,
