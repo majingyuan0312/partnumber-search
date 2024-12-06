@@ -48,6 +48,6 @@ if keyword:
     st.write(f"共找到 {len(results)} 条结果：")
 
     # 显示结果表格（隐藏索引）
-    st.dataframe(results.style.hide(axis="index"), use_container_width=True)
+    st.dataframe(results, use_container_width=True)
 else:
     st.info("技术资料仅供参考，不作为维修依据")
