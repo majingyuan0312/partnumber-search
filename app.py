@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # 设置页面标题
-st.title("件号搜索工具")
+st.title("搜索工具")
 
 # 使用 Session State 存储用户选择的文件
 if "file_name" not in st.session_state:
@@ -11,10 +11,10 @@ if "file_name" not in st.session_state:
 # 文件选择按钮
 col1, col2 = st.columns(2)
 with col1:
-    if st.button("检索 data.csv"):
+    if st.button("件号"):
         st.session_state.file_name = "data.csv"
 with col2:
-    if st.button("检索 breaker.csv"):
+    if st.button("跳开关"):
         st.session_state.file_name = "breaker.csv"
 
 # 检查是否选择了文件
