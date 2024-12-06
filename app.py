@@ -36,9 +36,18 @@ keyword = st.text_input("请输入搜索关键词")
 if keyword:
     # 搜索逻辑
     results = data[data.apply(lambda row: keyword.lower() in row.to_string().lower(), axis=1)]
+    # 自动获取当前文件的列名
+    columns_to_display = list(data.columns)  # 自动获取全部列名
+    if len(columns_to_display) != 3:
+        st.error("每个文件应包含三列，请检查文件内容是否正确。")
+        st.stop()
+
+    # 保留指定列
+    results = results[columns_to_display]
+
     st.write(f"共找到 {len(results)} 条结果：")
-    results = results.reset_index(drop=True)
-    #显示结果表格
-    st.dataframe(results, use_container_width=True)
+
+    # 显示结果表格（隐藏索引）
+    st.dataframe(results.style.hide(axis="index"), use_container_width=True)
 else:
     st.info("技术资料仅供参考，不作为维修依据")
