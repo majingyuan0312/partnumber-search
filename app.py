@@ -22,4 +22,4 @@ if keyword:
     st.write(f"共找到 {len(results)} 条结果：")
     st.dataframe(results, use_container_width=True)
 else:
-    st.info("请在上方输入关键词以搜索数据")
+    st.info("技术资料仅供参考，不作为维修依据")
