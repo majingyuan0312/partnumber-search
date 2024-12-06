@@ -37,9 +37,16 @@ if keyword:
     # 搜索逻辑
     results = data[data.iloc[:,0].astype(str).str.contains(keyword,case=False,na=False)]
     st.write(f"共找到 {len(results)} 条结果：")
-    #转置每条记录适应手机竖屏
-    for index, row in results.iterrows():
-        st.write(f"**记录{index+1}:**")
-        st.table(row.to_frame(name="值").T)
+    # 设置列宽适配手机竖屏
+    st.dataframe(
+        results.style.set_properties(
+            **{
+                "text-align": "left",
+                "white-space": "nowrap",
+                "overflow": "hidden",
+            }
+        ),
+        use_container_width=True,
+    )
 else:
     st.info("技术资料仅供参考，不作为维修依据")
