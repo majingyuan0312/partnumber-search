@@ -28,7 +28,7 @@ if st.session_state.file_name:
         st.error(f"未找到数据文件 {file_name}，请检查文件是否存在于程序目录中。")
         st.stop()
 else:
-    st.warning("请点击上方按钮选择要检索的文件！")
+    st.warning("点击上方按钮选择要检索的内容，手机横屏更方便")
     st.stop()
 
 # 搜索功能
