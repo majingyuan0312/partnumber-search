@@ -37,6 +37,9 @@ if keyword:
     # 搜索逻辑
     results = data[data.apply(lambda row: keyword.lower() in row.to_string().lower(), axis=1)]
     st.write(f"共找到 {len(results)} 条结果：")
+    #重置索引以隐藏编号
+    results = results.reset_index(drop=Ture)
+    #显示结果表格
     st.dataframe(results, use_container_width=True)
 else:
     st.info("技术资料仅供参考，不作为维修依据")
