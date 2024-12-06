@@ -23,7 +23,7 @@ if st.session_state.file_name:
     try:
         # 加载数据
         data = pd.read_csv(file_name)
-        st.success(f"开始检索")
+        st.success(f"已加载文件:{file_name}")
     except FileNotFoundError:
         st.error(f"未找到数据文件 {file_name}，请检查文件是否存在于程序目录中。")
         st.stop()
