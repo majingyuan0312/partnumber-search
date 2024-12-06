@@ -37,6 +37,7 @@ if keyword:
     # 搜索逻辑
     results = data[data.apply(lambda row: keyword.lower() in row.to_string().lower(), axis=1)]
     st.write(f"共找到 {len(results)} 条结果：")
+    results = results.reset_index(drop=True)
     #显示结果表格
     st.dataframe(results, use_container_width=True)
 else:
