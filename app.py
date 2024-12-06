@@ -35,7 +35,7 @@ else:
 keyword = st.text_input("请输入搜索关键词")
 if keyword:
     # 搜索逻辑
-    results = data[data.apply(lambda row: keyword.lower() in row.to_string().lower(), axis=1)]
+    results = data[data.iloc[:,0].astype(str).str.contains(keyword,case=False,na=False)]
     st.write(f"共找到 {len(results)} 条结果：")
     #显示结果表格
     st.dataframe(results, use_container_width=True)
