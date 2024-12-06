@@ -37,25 +37,16 @@ if keyword:
     # 搜索逻辑
     results = data[data.iloc[:,0].astype(str).str.contains(keyword,case=False,na=False)]
     st.write(f"共找到 {len(results)} 条结果：")
-    # 设置列宽和自动换行样式
-    styled_results = results.style.set_table_styles(
-        [
-            {
-                "selector": "th",
-                "props": [("font-size", "14px"), ("text-align", "left")],
-            },
-            {
-                "selector": "td",
-                "props": [
-                    ("font-size", "14px"),
-                    ("text-align", "left"),
-                    ("word-wrap", "break-word"),
-                    ("white-space", "normal"),
-                    ("max-width", "150px"),  # 固定列宽
-                ],
-            },
-        ]
+    # 设置列宽适配手机竖屏
+    st.dataframe(
+        results.style.set_properties(
+            **{
+                "text-align": "left",
+                "white-space": "nowrap",
+                "overflow": "hidden",
+            }
+        ),
+        use_container_width=True,
     )
-   
 else:
     st.info("技术资料仅供参考，不作为维修依据")
